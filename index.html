@@ -3,41 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vision</title>
+    <title>VisionGrid | Gestão de Projetos como Trello + PM Canvas | #1 em 2025</title>
+    <meta name="description" content="A plataforma definitiva para gestão de projetos que combina o melhor do Trello com metodologias PM Canvas. Colaboração em tempo real, templates prontos e relatórios automáticos para sua equipe.">
+    <meta name="keywords" content="trello alternativo, gestão de projetos, pm canvas, kanban online, ferramenta colaborativa, gerenciamento de tarefas, visão geral de projetos, software PMO">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="VisionGrid - A Revolução na Gestão de Projetos (Melhor que Trello)">
+    <meta property="og:description" content="Plataforma tudo-em-um para gestão ágil de projetos. Experimente grátis!">
+    <meta property="og:url" content="https://visiongrid.vercel.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://visiongrid.vercel.app/images/og-image.jpg">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://visiongrid.vercel.app/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "VisionGrid",
+      "alternateName": "Alternative to Trello with PM Canvas",
+      "url": "https://visiongrid.vercel.app/",
+      "logo": "https://visiongrid.vercel.app/images/logo.png",
+      "description": "Plataforma avançada de gestão de projetos combinando Kanban e metodologia PM Canvas",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "operatingSystem": "Web Browser"
+    }
+    </script>
 </head>
-<body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision | Gestão Tech de Projetos</title>
+    <meta name="description" content="Plataforma avançada para gestão colaborativa de projetos">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body class="tech-mode">
+    <div class="tech-grid"></div>
+    <div class="tech-particles"></div>
+    
+    <header class="app-header">
+        <div class="logo-container">
+            <div class="holographic-icon">
+                <div class="holographic-effect"></div>
+                <i class="fas fa-project-diagram"></i>
+            </div>
+            <h1>VISION GRID</h1>
+        </div>
+        <div class="header-actions">
+            <button id="tech-mode" class="tech-btn">
+                <i class="fas fa-adjust"></i> TECH MODE
+            </button>
+            <div class="tech-divider"></div>
+            <button id="export-pdf" class="tech-btn">
+                <i class="fas fa-file-export"></i> EXPORT
+            </button>
+            <button id="share-project" class="tech-btn">
+                <i class="fas fa-share-alt"></i> SHARE
+            </button>
+            <button id="save-project" class="tech-btn primary">
+                <i class="fas fa-save"></i> SAVE
+            </button>
+        </div>
+    </header>
+
     <div class="container">
         <div class="section" id="proposito">
-            <h2>Propósito (Por quê?)</h2>
-            <textarea placeholder="Descreva o propósito do projeto"></textarea>
+            <div class="section-header" data-tooltip="A razão fundamental do projeto">
+                <div class="tech-emoji">🚀</div>
+                <h2>PROPÓSITO</h2>
+                <div class="tech-underline"></div>
+            </div>
+            <textarea placeholder="Descreva o propósito do projeto..." class="tech-input"></textarea>
+            <div class="tech-counter">0/500</div>
         </div>
+
         <div class="section" id="escopo">
-            <h2>Escopo (O quê?)</h2>
-            <textarea placeholder="Descreva o escopo do projeto"></textarea>
+            <div class="section-header" data-tooltip="O que será entregue no projeto">
+                <div class="tech-emoji">🌌</div>
+                <h2>ESCOPO</h2>
+                <div class="tech-underline"></div>
+            </div>
+            <textarea placeholder="Descreva o escopo do projeto..." class="tech-input"></textarea>
+            <div class="tech-counter">0/500</div>
         </div>
+
         <div class="section" id="recursos-humanos">
-            <h2>Recursos Humanos (Quem?)</h2>
-            <textarea placeholder="Liste os recursos humanos envolvidos"></textarea>
+            <div class="section-header" data-tooltip="Quem fará parte do projeto">
+                <div class="tech-emoji">👥</div>
+                <h2>RECURSOS HUMANOS</h2>
+                <div class="tech-underline"></div>
+            </div>
+            <textarea placeholder="Liste os recursos humanos envolvidos..." class="tech-input"></textarea>
+            <div class="tech-counter">0/500</div>
         </div>
+
         <div class="section" id="plano-execucao">
-            <h2>Plano de Execução (Como?)</h2>
-            <textarea placeholder="Descreva o plano de execução"></textarea>
+            <div class="section-header" data-tooltip="Como o projeto será executado">
+                <div class="tech-emoji">📊</div>
+                <h2>PLANO DE EXECUÇÃO</h2>
+                <div class="tech-underline"></div>
+            </div>
+            <textarea placeholder="Descreva o plano de execução..." class="tech-input"></textarea>
+            <div class="tech-counter">0/500</div>
         </div>
+
         <div class="section" id="planejamento-financeiro-temporal">
-            <h2>Planejamento Financeiro e Temporal (Quando/Quanto?)</h2>
-            <textarea placeholder="Descreva o planejamento financeiro e temporal"></textarea>
+            <div class="section-header" data-tooltip="Quando e quanto custará">
+                <div class="tech-emoji">⏳</div>
+                <h2>PLANEJAMENTO FINANCEIRO</h2>
+                <div class="tech-underline"></div>
+            </div>
+            <textarea placeholder="Descreva o planejamento financeiro e temporal..." class="tech-input"></textarea>
+            <div class="tech-counter">0/500</div>
         </div>
-        <div class="section optional" id="comunicacao">
-            <h2>Comunicação</h2>
-            <textarea placeholder="Descreva como será feita a comunicação"></textarea>
+
+        <div class="section tech-optional" id="comunicacao">
+            <div class="section-header" data-tooltip="Como será feita a comunicação">
+                <div class="tech-emoji">📡</div>
+                <h2>COMUNICAÇÃO</h2>
+                <div class="tech-underline"></div>
+            </div>
+            <textarea placeholder="Descreva como será feita a comunicação..." class="tech-input"></textarea>
+            <div class="tech-counter">0/500</div>
         </div>
-        <div class="section optional" id="metricas-sucesso">
-            <h2>Métricas de Sucesso</h2>
-            <textarea placeholder="Descreva as métricas de sucesso"></textarea>
+
+        <div class="section tech-optional" id="metricas-sucesso">
+            <div class="section-header" data-tooltip="Como avaliar os resultados">
+                <div class="tech-emoji">📈</div>
+                <h2>MÉTRICAS DE SUCESSO</h2>
+                <div class="tech-underline"></div>
+            </div>
+            <textarea placeholder="Descreva as métricas de sucesso..." class="tech-input"></textarea>
+            <div class="tech-counter">0/500</div>
         </div>
     </div>
 
+    <button id="toggle-optional" class="tech-floating-btn">
+        <i class="fas fa-plus"></i>
+    </button>
+
+    <div class="tech-modal" id="share-modal">
+        <div class="tech-modal-content">
+            <div class="tech-modal-header">
+                <h3>SHARE PROJECT</h3>
+                <span class="tech-close-modal">&times;</span>
+            </div>
+            <div class="tech-modal-body">
+                <div class="tech-input-group">
+                    <input type="text" id="share-link" class="tech-modal-input" readonly>
+                    <button id="copy-link" class="tech-modal-btn">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+                <div class="tech-social-btns">
+                    <button class="tech-social-btn whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </button>
+                    <button class="tech-social-btn email">
+                        <i class="fas fa-envelope"></i>
+                    </button>
+                    <button class="tech-social-btn teams">
+                        <i class="fas fa-users"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tech-overlay"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
