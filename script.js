@@ -356,3 +356,37 @@ if ('serviceWorker' in navigator) {
         });
     });
 }
+
+// Detectar mobile e ajustar comportamentos
+function detectMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// Ajustar viewport para mobile
+function adjustViewport() {
+    if (detectMobile()) {
+        const viewport = document.querySelector('meta[name="viewport"]');
+        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+    }
+}
+
+// Inicializar ajustes mobile
+document.addEventListener('DOMContentLoaded', function() {
+    adjustViewport();
+    
+    // Ajustes específicos para mobile
+    if (detectMobile()) {
+        // Suavizar animações para melhor performance
+        document.body.style.setProperty('--transition', 'all 0.2s ease');
+        
+        // Remover efeitos pesados em mobile
+        const particles = document.querySelector('.tech-particles');
+        if (particles) particles.style.display = 'none';
+        
+        // Ajustar tooltips para mobile
+        const tooltips = document.querySelectorAll('[data-tooltip]');
+        tooltips.forEach(tooltip => {
+            tooltip.setAttribute('title', tooltip.getAttribute('data-tooltip'));
+        });
+    }
+});
