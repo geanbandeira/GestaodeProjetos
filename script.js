@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Adicionar rodapé
         doc.setFontSize(8);
         doc.setTextColor(100);
-        doc.text('Gerado com Vision Platform - www.visiongrid.vercel.app', 105, doc.internal.pageSize.getHeight() - 10, { align: 'center' });
+        doc.text('Gerado com Vision Platform - visiongrid.vercel.app', 105, doc.internal.pageSize.getHeight() - 10, { align: 'center' });
         
         // Salvar o PDF
         doc.save('vision-gestao-projeto.pdf');
