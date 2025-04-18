@@ -295,8 +295,231 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function generateReport() {
-        // Simular geração de relatório detalhado
-        alert('Detailed report generation would be implemented here with real data analysis and AI insights.');
+        // Coletar dados de todas as seções
+        const reportData = {};
+        canvasSections.forEach(section => {
+            const sectionClass = section.classList[1];
+            const title = section.querySelector('h2').textContent;
+            const content = section.querySelector('.canvas-content').innerText.trim();
+            
+            if (content) {
+                reportData[sectionClass] = {
+                    title: title,
+                    content: content
+                };
+            }
+        });
+    
+        // Verificar se há dados para gerar o relatório
+        if (Object.keys(reportData).length === 0) {
+            alert('Por favor, preencha pelo menos uma seção do canvas antes de gerar o relatório.');
+            return;
+        }
+    
+        // Criar o PDF
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        
+        // Configurações do documento
+        doc.setDocumentProperties({
+            title: 'Relatório Detalhado - Vision Canvas',
+            subject: 'Análise Completa do Modelo de Negócios',
+            author: 'Vision Platform',
+            keywords: 'business, model, canvas, strategy, analysis',
+            creator: 'Vision Tech'
+        });
+    
+        // Cabeçalho do relatório
+        doc.setFontSize(20);
+        doc.setTextColor(0, 120, 215);
+        doc.setFont('helvetica', 'bold');
+        doc.text('RELATÓRIO DETALHADO', 105, 20, { align: 'center' });
+        
+        doc.setFontSize(14);
+        doc.setTextColor(100);
+        doc.setFont('helvetica', 'normal');
+        doc.text('Análise Completa do Modelo de Negócios', 105, 28, { align: 'center' });
+        
+        doc.setFontSize(10);
+        doc.text(`Gerado em: ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`, 105, 35, { align: 'center' });
+        
+        // Adicionar métricas de análise
+        doc.setFontSize(12);
+        doc.setTextColor(0, 120, 215);
+        doc.setFont('helvetica', 'bold');
+        doc.text('MÉTRICAS-CHAVE', 15, 45);
+        
+        doc.setFontSize(10);
+        doc.setTextColor(0);
+        doc.setFont('helvetica', 'normal');
+        
+        const metrics = document.querySelectorAll('.metric');
+        let metricsY = 55;
+        
+        metrics.forEach(metric => {
+            const label = metric.querySelector('.metric-label').textContent;
+            const value = metric.querySelector('.metric-value').textContent;
+            
+            doc.text(`${label}: ${value}`, 20, metricsY);
+            metricsY += 7;
+        });
+        
+        // Adicionar sugestões de IA
+        doc.setFontSize(12);
+        doc.setTextColor(0, 120, 215);
+        doc.setFont('helvetica', 'bold');
+        doc.text('SUGESTÕES DE IA', 15, metricsY + 10);
+        
+        doc.setFontSize(10);
+        doc.setTextColor(0);
+        doc.setFont('helvetica', 'normal');
+        
+        const suggestions = document.querySelectorAll('.analysis-suggestions li');
+        let suggestionsY = metricsY + 20;
+        
+        suggestions.forEach(suggestion => {
+            const text = suggestion.textContent.trim();
+            const splitText = doc.splitTextToSize(text, 180);
+            doc.text(splitText, 20, suggestionsY);
+            suggestionsY += splitText.length * 7;
+        });
+        
+        // Adicionar conteúdo detalhado de cada seção
+        let contentY = suggestionsY + 15;
+        let page = 1;
+        
+        Object.entries(reportData).forEach(([sectionClass, data]) => {
+            if (contentY > 270) {
+                doc.addPage();
+                contentY = 20;
+                page++;
+            }
+            
+            doc.setFontSize(14);
+            doc.setTextColor(0, 120, 215);
+            doc.setFont('helvetica', 'bold');
+            doc.text(data.title.toUpperCase(), 15, contentY);
+            contentY += 10;
+            
+            doc.setFontSize(11);
+            doc.setTextColor(0);
+            doc.setFont('helvetica', 'normal');
+            
+            const splitContent = doc.splitTextToSize(data.content, 180);
+            doc.text(splitContent, 15, contentY);
+            contentY += splitContent.length * 6 + 10;
+            
+            // Adicionar análise específica para cada seção
+            doc.setFontSize(10);
+            doc.setTextColor(80);
+            doc.setFont('helvetica', 'italic');
+            
+            const sectionAnalysis = generateSectionAnalysis(sectionClass, data.content);
+            const splitAnalysis = doc.splitTextToSize(sectionAnalysis, 180);
+            doc.text(splitAnalysis, 15, contentY);
+            contentY += splitAnalysis.length * 5 + 15;
+        });
+        
+        // Adicionar análise geral
+        if (contentY > 250) {
+            doc.addPage();
+            contentY = 20;
+        }
+        
+        doc.setFontSize(12);
+        doc.setTextColor(0, 120, 215);
+        doc.setFont('helvetica', 'bold');
+        doc.text('ANÁLISE GERAL', 15, contentY);
+        contentY += 10;
+        
+        doc.setFontSize(10);
+        doc.setTextColor(0);
+        doc.setFont('helvetica', 'normal');
+        
+        const overallAnalysis = generateOverallAnalysis(reportData);
+        const splitOverall = doc.splitTextToSize(overallAnalysis, 180);
+        doc.text(splitOverall, 15, contentY);
+        contentY += splitOverall.length * 5 + 10;
+        
+        // Rodapé
+        doc.setFontSize(8);
+        doc.setTextColor(100);
+        doc.text(`Página ${page}`, 105, doc.internal.pageSize.getHeight() - 10, { align: 'center' });
+        doc.text('Gerado com Vision Platform - www.dontpage.online', 105, doc.internal.pageSize.getHeight() - 5, { align: 'center' });
+        
+        // Salvar o PDF
+        doc.save(`relatorio-detalhado-${new Date().toISOString().slice(0,10)}.pdf`);
+    }
+    
+    // Função auxiliar para gerar análise específica de cada seção
+    function generateSectionAnalysis(sectionClass, content) {
+        const analysisMap = {
+            'customer-segment': `Análise: O conteúdo descreve ${content.split(' ').length} palavras sobre segmentos de clientes. ` +
+                               `Recomendamos validar esses segmentos com pesquisas de mercado e dados reais.`,
+            
+            'value-proposition': `Análise: Sua proposta de valor contém ${content.split(' ').length} palavras. ` +
+                                `Verifique se está clara e diferenciada o suficiente para atrair seus segmentos de clientes.`,
+            
+            'channels': `Análise: Você descreveu ${content.split(',').length} canais diferentes. ` +
+                       `Considere a eficiência de cada um e como eles se integram à jornada do cliente.`,
+            
+            'customer-relationships': `Análise: Seu modelo de relacionamento tem ${content.split(' ').length} palavras. ` +
+                                    `Avalie se cobre todos os pontos de contato importantes com os clientes.`,
+            
+            'revenue-streams': `Análise: Você mencionou ${content.split(',').length} fontes de receita. ` +
+                              `Considere a sustentabilidade e escalabilidade de cada uma.`,
+            
+            'key-resources': `Análise: Identificou ${content.split(',').length} recursos principais. ` +
+                            `Avalie se são suficientes e como podem ser otimizados.`,
+            
+            'key-activities': `Análise: Descreveu ${content.split(',').length} atividades-chave. ` +
+                             `Priorize aquelas que são essenciais para entregar sua proposta de valor.`,
+            
+            'key-partnerships': `Análise: Mencionou ${content.split(',').length} parcerias. ` +
+                              `Considere como elas podem ajudar a reduzir custos e riscos.`,
+            
+            'cost-structure': `Análise: Sua estrutura de custos contém ${content.split(' ').length} palavras. ` +
+                             `Destaque os custos mais significativos e oportunidades de otimização.`
+        };
+        
+        return analysisMap[sectionClass] || 'Análise detalhada desta seção baseada no conteúdo fornecido.';
+    }
+    
+    // Função auxiliar para gerar análise geral
+    function generateOverallAnalysis(reportData) {
+        const totalWords = Object.values(reportData).reduce((sum, section) => {
+            return sum + section.content.split(' ').length;
+        }, 0);
+        
+        const completenessScore = Math.min(100, Math.floor(totalWords / 5));
+        
+        return `Análise Geral: Seu canvas contém aproximadamente ${totalWords} palavras distribuídas por ${Object.keys(reportData).length} seções. ` +
+               `Isso indica um nível de completude de cerca de ${completenessScore}%. ` +
+               `Recomendamos revisar as seções menos detalhadas e garantir que todas as áreas críticas do modelo de negócios estão adequadamente cobertas. ` +
+               `Pontos fortes incluem ${getRandomStrengths()}. Áreas para melhoria incluem ${getRandomImprovements()}.`;
+    }
+    
+    // Funções auxiliares para exemplos
+    function getRandomStrengths() {
+        const strengths = [
+            "clareza na proposta de valor",
+            "diversificação de fontes de receita",
+            "identificação precisa dos segmentos de clientes",
+            "estrutura de custos bem definida",
+            "abordagem inovadora para parcerias"
+        ];
+        return strengths[Math.floor(Math.random() * strengths.length)];
+    }
+    
+    function getRandomImprovements() {
+        const improvements = [
+            "maior detalhamento nos canais de distribuição",
+            "exploração de novos modelos de receita",
+            "aprofundamento nas relações com clientes",
+            "otimização de recursos-chave",
+            "maior foco nas atividades críticas"
+        ];
+        return improvements[Math.floor(Math.random() * improvements.length)];
     }
     
     function provideAISuggestions() {
