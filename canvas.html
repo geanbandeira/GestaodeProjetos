@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionGrid | Business Canvas Avançado | #1 em 2025</title>
+    <meta name="description" content="Business Canvas revolucionário com visualização 3D, análise preditiva e integração de dados em tempo real. A evolução do modelo de negócios para 2025.">
+    <meta name="keywords" content="business canvas, modelo de negócios, estratégia empresarial, análise preditiva, visualização 3D, ferramenta de planejamento">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="VisionGrid - Business Canvas Avançado">
+    <meta property="og:description" content="A próxima geração de modelagem de negócios com inteligência integrada e visualização 3D">
+    <meta property="og:url" content="https://visiongrid.vercel.app/canvas.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://visiongrid.vercel.app/images/og-canvas.jpg">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://visiongrid.vercel.app/canvas.html">
+    
+    <meta name="google-adsense-account" content="ca-pub-5193426707977874">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="canvas.css">
+    
+    <!-- Three.js para visualização 3D -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+</head>
+<body class="tech-mode">
+    <div class="tech-grid"></div>
+    <div class="tech-particles"></div>
+    
+    <header class="app-header">
+        <div class="logo-container">
+            <div class="holographic-icon">
+                <div class="holographic-effect"></div>
+                <i class="fas fa-project-diagram"></i>
+            </div>
+            <h1>VISION CANVAS</h1>
+        </div>
+        <div class="header-actions">
+            <button id="tech-mode" class="tech-btn">
+                <i class="fas fa-adjust"></i> TECH MODE
+            </button>
+            <div class="tech-divider"></div>
+            <a href="index.html" class="tech-btn">
+                <i class="fas fa-grid"></i> PROJECT
+            </a>
+            <button id="export-canvas" class="tech-btn">
+                <i class="fas fa-file-export"></i> EXPORT
+            </button>
+            <button id="analyze-data" class="tech-btn">
+                <i class="fas fa-brain"></i> ANALYZE
+            </button>
+            <button id="save-canvas" class="tech-btn primary">
+                <i class="fas fa-save"></i> SAVE
+            </button>
+        </div>
+    </header>
+
+    <div class="canvas-container">
+        <!-- Visualização 3D do Canvas -->
+        <div class="canvas-3d-view" id="canvas3d"></div>
+        
+        <!-- Modo Edição (2D) -->
+        <div class="canvas-2d-edit">
+            <div class="canvas-grid">
+                <!-- Segmento de Clientes -->
+                <div class="canvas-section customer-segment">
+                    <div class="section-header" data-tooltip="Quais são seus clientes-alvo?">
+                        <div class="tech-emoji">👥</div>
+                        <h2>Seguimento de Clientes</h2>
+                        <div class="tech-underline"></div>
+                    </div>
+                    <div class="canvas-content" contenteditable="true" data-placeholder="Who are your key customers?"></div>
+                    <div class="canvas-ai-suggestions" data-for="customer-segment"></div>
+                </div>
+                
+                <!-- Proposta de Valor -->
+                <div class="canvas-section value-proposition">
+                    <div class="section-header" data-tooltip="O que sua empresa oferece de valioso aos clientes?">
+                        <div class="tech-emoji">💎</div>
+                        <h2>PROPOSTA DE VALOR</h2>
+                        <div class="tech-underline"></div>
+                    </div>
+                    <div class="canvas-content" contenteditable="true" data-placeholder="What unique value do you provide?"></div>
+                    <div class="canvas-ai-suggestions" data-for="value-proposition"></div>
+                </div>
+                
+                <!-- Canais -->
+                <div class="canvas-section channels">
+                    <div class="section-header" data-tooltip="Como o cliente adquire e recebe?">
+                        <div class="tech-emoji">📡</div>
+                        <h2>CANAIS</h2>
+                        <div class="tech-underline"></div>
+                    </div>
+                    <div class="canvas-content" contenteditable="true" data-placeholder="How do you reach your customers?"></div>
+                    <div class="canvas-ai-suggestions" data-for="channels"></div>
+                </div>
+                
+                <!-- Relacionamento com Clientes -->
+                <div class="canvas-section customer-relationships">
+                    <div class="section-header" data-tooltip="Como você engajará cada cliente?">
+                        <div class="tech-emoji">🤝</div>
+                        <h2>RELACIONAMENTO COM CLIENTES</h2>
+                        <div class="tech-underline"></div>
+                    </div>
+                    <div class="canvas-content" contenteditable="true" data-placeholder="How do you interact with customers?"></div>
+                    <div class="canvas-ai-suggestions" data-for="customer-relationships"></div>
+                </div>
+                
+                <!-- Fontes de Receita -->
+                <div class="canvas-section revenue-streams">
+                    <div class="section-header" data-tooltip="Quais são seus fluxos de receita?">
+                        <div class="tech-emoji">💰</div>
+                        <h2>FONTES DE RECEITA</h2>
+                        <div class="tech-underline"></div>
+                    </div>
+                    <div class="canvas-content" contenteditable="true" data-placeholder="How does your business make money?"></div>
+                    <div class="canvas-ai-suggestions" data-for="revenue-streams"></div>
+                </div>
+                
+                <!-- Recursos Principais -->
+                <div class="canvas-section key-resources">
+                    <div class="section-header" data-tooltip="Sem quais recursos seu modelo não funciona?">
+                        <div class="tech-emoji">🛠️</div>
+                        <h2>RECURSOS PRINCIPAIS</h2>
+                        <div class="tech-underline"></div>
+                    </div>
+                    <div class="canvas-content" contenteditable="true" data-placeholder="What key assets do you need?"></div>
+                    <div class="canvas-ai-suggestions" data-for="key-resources"></div>
+                </div>
+                
+                <!-- Atividades Principais -->
+                <div class="canvas-section key-activities">
+                    <div class="section-header" data-tooltip="Atividades essenciais para entregar o prometido.">
+                        <div class="tech-emoji">🏗️</div>
+                        <h2>ATIVIDADES CHAVES</h2>
+                        <div class="tech-underline"></div>
+                    </div>
+                    <div class="canvas-content" contenteditable="true" data-placeholder="What key things must you do?"></div>
+                    <div class="canvas-ai-suggestions" data-for="key-activities"></div>
+                </div>
+                
+                <!-- Parcerias Principais -->
+                <div class="canvas-section key-partnerships">
+                    <div class="section-header" data-tooltip="O que é essencial comprar/terceirizar em vez de fazer internamente?">
+                        <div class="tech-emoji">🤝</div>
+                        <h2>PARCERIAS PRINCIPAIS</h2>
+                        <div class="tech-underline"></div>
+                    </div>
+                    <div class="canvas-content" contenteditable="true" data-placeholder="Who are your key partners?"></div>
+                    <div class="canvas-ai-suggestions" data-for="key-partnerships"></div>
+                </div>
+                
+                <!-- Estrutura de Custos -->
+                <div class="canvas-section cost-structure">
+                    <div class="section-header" data-tooltip="Custos operacionais indispensáveis.">
+                        <div class="tech-emoji">📉</div>
+                        <h2>ESTRUTURA DE CUSTOS</h2>
+                        <div class="tech-underline"></div>
+                    </div>
+                    <div class="canvas-content" contenteditable="true" data-placeholder="What are your major costs?"></div>
+                    <div class="canvas-ai-suggestions" data-for="cost-structure"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br><!-- Controles do Canvas -->
+    <div class="canvas-controls">
+        <button id="toggle-view" class="tech-btn">
+            <i class="fas fa-exchange-alt"></i> ALTERNAR VISUALIZAÇÃO 3D
+        </button>
+        <button id="ai-assistant" class="tech-btn">
+            <i class="fas fa-robot"></i> AI ASSISTANT
+        </button>
+        <button id="add-metric" class="tech-btn">
+            <i class="fas fa-chart-line"></i> ADICIONE MÉTRICA
+        </button>
+    </div>
+
+    <!-- Modal de Análise -->
+    <div class="tech-modal" id="analysis-modal">
+        <div class="tech-modal-content">
+            <div class="tech-modal-header">
+                <h3>BUSINESS ANALYSIS</h3>
+                <span class="tech-close-modal">&times;</span>
+            </div>
+            <div class="tech-modal-body">
+                <div class="analysis-results">
+                    <div class="analysis-metrics">
+                        <h4>KEY METRICS</h4>
+                        <div class="metric" data-metric="viability">
+                            <div class="metric-label">Business Viability</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" style="width: 75%"></div>
+                            </div>
+                            <div class="metric-value">75%</div>
+                        </div>
+                        <div class="metric" data-metric="completeness">
+                            <div class="metric-label">Model Completeness</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" style="width: 60%"></div>
+                            </div>
+                            <div class="metric-value">60%</div>
+                        </div>
+                        <div class="metric" data-metric="innovation">
+                            <div class="metric-label">Innovation Level</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" style="width: 85%"></div>
+                            </div>
+                            <div class="metric-value">85%</div>
+                        </div>
+                    </div>
+                    <div class="analysis-suggestions">
+                        <h4>AI SUGGESTIONS</h4>
+                        <ul>
+                            <li><i class="fas fa-lightbulb"></i> Strengthen your value proposition with more specific differentiators</li>
+                            <li><i class="fas fa-lightbulb"></i> Consider adding a recurring revenue stream for stability</li>
+                            <li><i class="fas fa-lightbulb"></i> Explore partnerships to reduce key resource costs</li>
+                        </ul>
+                    </div>
+                </div>
+                <button id="generate-report" class="tech-btn primary">
+                    <i class="fas fa-file-alt"></i> GENERATE DETAILED REPORT
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="canvas.js"></script>
+</body>
+</html>

@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
             subject: 'Plano de Projeto',
             author: 'Vision Platform',
             keywords: 'gestão, projeto, planejamento',
-            creator: 'Vision Grid'
+            creator: 'Vision Tech'
         });
         
         // Título do documento
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Adicionar rodapé
         doc.setFontSize(8);
         doc.setTextColor(100);
-        doc.text('Gerado com Vision Platform - visiongrid.vercel.app', 105, doc.internal.pageSize.getHeight() - 10, { align: 'center' });
+        doc.text('Gerado com Vision Platform - www.visiontech.com', 105, doc.internal.pageSize.getHeight() - 10, { align: 'center' });
         
         // Salvar o PDF
         doc.save('vision-gestao-projeto.pdf');

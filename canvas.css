@@ -1,0 +1,347 @@
+/* Canvas Specific Styles - Estilos Base (compartilhados) */
+.canvas-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2rem;
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.canvas-3d-view {
+    width: 100%;
+    height: 500px;
+    border-radius: var(--border-radius-tech);
+    margin-bottom: 2rem;
+    display: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.canvas-2d-edit {
+    width: 100%;
+}
+
+.canvas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 1.5rem;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    cursor: help;
+}
+
+/* Estilos para Modo Light (clean-mode) - Padrão */
+.canvas-section {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    border-radius: var(--border-radius-tech);
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.canvas-content {
+    flex-grow: 1;
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius-tech);
+    background: white;
+    color: #333;
+    min-height: 150px;
+    margin: 1rem 0;
+    outline: none;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+}
+
+.canvas-content[data-placeholder]:empty:before {
+    content: attr(data-placeholder);
+    color: rgba(0, 0, 0, 0.4);
+    font-style: italic;
+}
+
+/* Estilos para Modo Dark (tech-mode) */
+body.tech-mode .canvas-section {
+    background: rgba(10, 10, 26, 0.9);
+    border: 1px solid var(--tech-border);
+    box-shadow: var(--tech-shadow);
+    backdrop-filter: blur(5px);
+}
+
+body.tech-mode .canvas-content {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--tech-border);
+    color: var(--tech-light);
+}
+
+body.tech-mode .canvas-content[data-placeholder]:empty:before {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Efeitos Hover - Diferentes para cada tema */
+.canvas-section:hover {
+    transform: translateY(-5px);
+}
+
+body.clean-mode .canvas-section:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    border-color: #bdbdbd;
+}
+
+body.tech-mode .canvas-section:hover {
+    box-shadow: 0 10px 20px rgba(0, 240, 255, 0.3);
+    border-color: var(--tech-primary);
+}
+
+.canvas-content:focus {
+    border-color: var(--tech-primary);
+    box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.2);
+}
+
+/* Bordas 3D View - mantém estilo tech mesmo em light mode */
+.canvas-3d-view {
+    border: 1px solid var(--tech-border);
+}
+
+/* Restante do CSS (compartilhado entre temas) */
+.canvas-ai-suggestions {
+    font-size: 0.8rem;
+    color: var(--tech-primary);
+    border-top: 1px dashed var(--tech-border);
+    padding-top: 0.5rem;
+    display: none;
+}
+
+/* Posicionamento dos blocos no grid */
+.customer-segment {
+    grid-column: 1;
+    grid-row: 1;
+    border-top: 3px solid #FF6B6B;
+}
+
+.value-proposition {
+    grid-column: 2;
+    grid-row: 1;
+    border-top: 3px solid #4ECDC4;
+}
+
+.channels {
+    grid-column: 3;
+    grid-row: 1;
+    border-top: 3px solid #45B7D1;
+}
+
+.customer-relationships {
+    grid-column: 1;
+    grid-row: 2;
+    border-top: 3px solid #FFA07A;
+}
+
+.revenue-streams {
+    grid-column: 3;
+    grid-row: 2;
+    border-top: 3px solid #98D8C8;
+}
+
+.key-resources {
+    grid-column: 1;
+    grid-row: 3;
+    border-top: 3px solid #F06292;
+}
+
+.key-activities {
+    grid-column: 2;
+    grid-row: 3;
+    border-top: 3px solid #7986CB;
+}
+
+.key-partnerships {
+    grid-column: 3;
+    grid-row: 3;
+    border-top: 3px solid #9575CD;
+}
+
+.cost-structure {
+    grid-column: 2;
+    grid-row: 2;
+    border-top: 3px solid #A1887F;
+}
+
+/* Controles do Canvas */
+.canvas-controls {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    z-index: 90;
+}
+
+/* Análise */
+.analysis-results {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.analysis-metrics, .analysis-suggestions {
+    flex: 1;
+}
+
+.metric {
+    margin-bottom: 1.5rem;
+}
+
+.metric-bar {
+    height: 10px;
+    background: rgba(0, 240, 255, 0.1);
+    border-radius: 5px;
+    margin: 0.5rem 0;
+    overflow: hidden;
+}
+
+.metric-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--tech-primary), var(--tech-secondary));
+    border-radius: 5px;
+    transition: width 1s ease;
+}
+
+.metric-label {
+    font-size: 0.9rem;
+    color: var(--tech-light);
+    margin-bottom: 0.2rem;
+}
+
+.metric-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    color: var(--tech-primary);
+    text-align: right;
+}
+
+.analysis-suggestions ul {
+    list-style: none;
+}
+
+.analysis-suggestions li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.analysis-suggestions li i {
+    position: absolute;
+    left: 0;
+    top: 0.2rem;
+    color: var(--tech-primary);
+}
+
+/* Responsividade - Tela Média */
+@media (max-width: 1200px) {
+    .canvas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .value-proposition {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    
+    .channels {
+        grid-column: 2;
+        grid-row: 2;
+    }
+    
+    .customer-relationships {
+        grid-column: 1;
+        grid-row: 3;
+    }
+    
+    .revenue-streams {
+        grid-column: 2;
+        grid-row: 3;
+    }
+    
+    .cost-structure {
+        grid-column: 1;
+        grid-row: 4;
+    }
+    
+    .key-resources {
+        grid-column: 2;
+        grid-row: 4;
+    }
+    
+    .key-activities {
+        grid-column: 1;
+        grid-row: 5;
+    }
+    
+    .key-partnerships {
+        grid-column: 2;
+        grid-row: 5;
+    }
+}
+
+/* Responsividade - Mobile (768px ou menos) */
+@media (max-width: 768px) {
+    .canvas-container {
+        padding: 1rem;
+    }
+    
+    .canvas-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .canvas-section {
+        max-width: 100%;
+        margin-bottom: 1rem;
+        padding: 1.2rem;
+        grid-column: 1 !important;
+        grid-row: auto !important;
+    }
+    
+    .canvas-content {
+        min-height: 120px;
+    }
+    
+    .canvas-controls {
+        flex-direction: column;
+        width: 70%;
+        bottom: 1rem;
+    }
+    
+    .analysis-results {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .section-header {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Modo 3D Ativo */
+body.canvas-3d-active .canvas-3d-view {
+    display: block;
+}
+
+body.canvas-3d-active .canvas-2d-edit {
+    display: none;
+}
