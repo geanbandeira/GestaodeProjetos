@@ -220,13 +220,13 @@ document.addEventListener('DOMContentLoaded', function() {
         doc.setFontSize(20);
         doc.setTextColor(0, 240, 255);
         doc.setFont('helvetica', 'bold');
-        doc.text('VISION BUSINESS CANVAS', 105, 20, { align: 'center' });
+        doc.text('VISION CANVAS', 105, 20, { align: 'center' });
         
         // Adicionar data
         doc.setFontSize(10);
         doc.setTextColor(150);
         doc.setFont('helvetica', 'normal');
-        doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 105, 28, { align: 'center' });
+        doc.text(`Generado em: ${new Date().toLocaleDateString()}`, 105, 28, { align: 'center' });
         
         let yPosition = 40;
         const pageWidth = doc.internal.pageSize.getWidth();
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Adicionar rodapé
         doc.setFontSize(8);
         doc.setTextColor(100);
-        doc.text('Generated with Vision Platform - www.dontpage.online', 105, doc.internal.pageSize.getHeight() - 10, { align: 'center' });
+        doc.text('Generated with Vision Canvas - www.dontpage.online/canvas', 105, doc.internal.pageSize.getHeight() - 10, { align: 'center' });
         
         // Salvar o PDF
         doc.save('vision-business-canvas.pdf');
